@@ -1,12 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const db = require('../db');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
- res.json([
-    { id: 1, name: 'Petrov' },
-    { id: 2, name: 'Lelin' }
-  ]);
+router.get('/', async (req, res) => {
+  try {
+    const data = await db.any('SELECT * FROM staff');
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 module.exports = router;
