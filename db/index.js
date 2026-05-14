@@ -4,8 +4,8 @@ const cn = {
     port: 5432,
     database: 'autoservice_kondratev',
     user: 'postgres',
-    password: 90577567
+    password: '90577567'
 };
-const db = pgp(connection);
+const db = pgp(cn);
 
 module.exports = db;
